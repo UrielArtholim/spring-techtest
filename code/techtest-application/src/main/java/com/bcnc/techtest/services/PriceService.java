@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class PriceService implements CreatePriceUseCase, RetrievePriceUseCase, UpdatePriceUseCase, DeletePriceUseCase {
@@ -33,8 +34,8 @@ public class PriceService implements CreatePriceUseCase, RetrievePriceUseCase, U
     }
 
     @Override
-    public void createPrice(int brandId, int priceId, int priceList, int priority, BigDecimal price, String currency, LocalDateTime startDate, LocalDateTime endDate) {
-        this.createPriceUseCase.createPrice(brandId, priceId, priceList, priority, price, currency, startDate, endDate);
+    public void createPrice(Price price) {
+        this.createPriceUseCase.createPrice(price);
     }
 
     @Override
@@ -43,8 +44,14 @@ public class PriceService implements CreatePriceUseCase, RetrievePriceUseCase, U
     }
 
     @Override
-    public void updatePrice(int brandId, int priceId, int priceList, int priority, BigDecimal price, String currency, LocalDateTime startDate, LocalDateTime endDate) {
-        this.updatePriceUseCase.updatePrice(brandId, priceId, priceList, priority, price, currency, startDate, endDate);
+    public List<Price> retrieveAllPrices()
+    {
+        return this.retrievePriceUseCase.retrieveAllPrices();
+    }
+
+    @Override
+    public void updatePrice(Price price) {
+        this.updatePriceUseCase.updatePrice(price);
     }
 
     @Override
