@@ -1,5 +1,6 @@
 package com.bcnc.techtest.usecases;
 
+import com.bcnc.techtest.domain.models.Price;
 import com.bcnc.techtest.domain.ports.in.CreatePriceUseCase;
 import com.bcnc.techtest.domain.ports.out.PriceRepositoryPort;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +19,8 @@ public class CreatePriceUseCaseImpl implements CreatePriceUseCase {
         this.repository = repository;
     }
     @Override
-    public void createPrice(int brandId, int priceId, int priceList, int priority, BigDecimal price, String currency, LocalDateTime startDate, LocalDateTime endDate) {
-        this.repository.createPrice(brandId, priceId, priceList, priority, price, currency, startDate, endDate);
+    public void createPrice(Price price){
+        this.repository.createPrice(price);
         log.debug("|- Use Case: Create Price -| ");
         log.debug("|- Status: COMPLETE -|");
     }

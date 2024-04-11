@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -22,5 +24,13 @@ public class RetrievePriceUseCaseImpl implements RetrievePriceUseCase {
         log.debug("|- Use Case: Retrieve Price -| ");
         log.debug("|- Status: COMPLETE -|");
         return price;
+    }
+
+    @Override
+    public List<Price> retrieveAllPrices() {
+        List<Price> priceList = this.repository.retrieveAllPrices();
+        log.debug("|- Use Case: Retrieve All Prices -| ");
+        log.debug("|- Status: COMPLETE -|");
+        return priceList;
     }
 }
