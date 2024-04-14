@@ -16,19 +16,6 @@
         <module>techtest-rest-api</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>techtest-data-jpa</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>techtest-rest-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
