@@ -18,7 +18,7 @@ public class UpdateProductUseCaseImpl implements UpdateProductUseCase {
     }
 
     @Override
-    public void updateProduct(Long brandId, Long productId, LocalDateTime date, Product product) {
+    public void updateProduct(long brandId, long productId, LocalDateTime date, Product product) {
         this.repository.updateProduct(brandId, productId, date, product);
         log.debug("|- Use Case: Update Product -| ");
         log.debug("|- Status: COMPLETE -|");

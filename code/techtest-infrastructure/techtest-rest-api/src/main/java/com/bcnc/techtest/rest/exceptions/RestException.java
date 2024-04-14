@@ -5,11 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;
 
-@Data
 @EqualsAndHashCode(callSuper = true)
+@Data
 @AllArgsConstructor
-public class RestException extends Exception {
-    private final String message;
-    private final HttpStatus status;
-
+public class RestException extends Throwable {
+    protected final HttpStatus status;
+    protected final String message;
 }
