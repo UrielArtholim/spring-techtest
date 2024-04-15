@@ -10,28 +10,13 @@ tags:
   - name: Products
     description: Related to products
 paths:
-  /products/{productId}/brand/{brandId}:
+  /products:
     post:
       operationId: CreateProduct
       description: Add a product given its brand and id and an active date
       summary: Get a specific product at the date
       tags:
         - Products
-      parameters:
-        - in: path
-          name: productId
-          schema:
-            type: integer
-          required: true
-          description: Product ID
-          example: 1309
-        - in: path
-          name: brandId
-          schema:
-            type: integer
-          required: true
-          description: Brand ID
-          example: 10036
       requestBody:
         description: Updated product information
         required: true

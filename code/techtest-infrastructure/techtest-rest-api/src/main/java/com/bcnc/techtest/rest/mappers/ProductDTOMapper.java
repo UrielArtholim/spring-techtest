@@ -4,7 +4,7 @@ import com.bcnc.techtest.domain.models.Product;
 import com.bcnc.techtest.model.ProductDTO;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ProductDTOMapper {
 
     ProductDTO toProductDTO(Product product);
