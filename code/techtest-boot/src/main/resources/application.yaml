@@ -1,8 +1,8 @@
 logging:
   level:
     root: INFO
-    org.springframework.web: DEBUG
-    com.bcnc.techtest: DEBUG
+    org.springframework.web: TRACE
+    com.bcnc.techtest: ERROR
 spring:
   datasource:
     url: jdbc:h2:mem:techtest
@@ -11,10 +11,7 @@ spring:
     password: ${techtest.pass}
   jpa:
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-        format_sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: none
   h2:
