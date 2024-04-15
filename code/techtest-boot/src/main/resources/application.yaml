@@ -21,3 +21,7 @@ spring:
     console:
       enabled: true
       path: /h2
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/docs

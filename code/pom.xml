@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.4</version>
-		<relativePath/>
-	</parent>
-	<groupId>com.bcnc</groupId>
-	<artifactId>techtest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.bcnc</groupId>
+    <artifactId>techtest</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>techtest</name>
-	<description>Technical test for BCNC</description>
+    <description>Technical test for BCNC</description>
     <modules>
         <module>techtest-domain</module>
-		<module>techtest-application</module>
-		<module>techtest-infrastructure</module>
-		<module>techtest-boot</module>
-	</modules>
+        <module>techtest-application</module>
+        <module>techtest-infrastructure</module>
+        <module>techtest-boot</module>
+    </modules>
     <properties>
-		<java.version>21</java.version>
-		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>techtest-data-jpa</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>techtest-rest-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
-		</dependency>
+        <java.version>21</java.version>
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>3.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

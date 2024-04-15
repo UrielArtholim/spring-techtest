@@ -12,7 +12,6 @@ import com.bcnc.techtest.usecases.UpdateProductUseCaseImpl;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class ProductService implements CreateProductUseCase, RetrieveProductUseCase, UpdateProductUseCase, DeleteProductUseCase {
@@ -44,7 +43,7 @@ public class ProductService implements CreateProductUseCase, RetrieveProductUseC
 
 
     @Override
-    public void updateProduct(Long brandId, Long productId, LocalDateTime date, Product product) {
+    public void updateProduct(long brandId, long productId, LocalDateTime date, Product product) {
         this.updateProductUseCase.updateProduct(brandId, productId, date, product);
     }
 

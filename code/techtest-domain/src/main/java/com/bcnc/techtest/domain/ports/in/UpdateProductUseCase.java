@@ -5,6 +5,6 @@ import com.bcnc.techtest.domain.models.Product;
 import java.time.LocalDateTime;
 
 public interface UpdateProductUseCase {
-    void updateProduct(Long brandId, Long productId, LocalDateTime date, Product product);
+    void updateProduct(long brandId, long productId, LocalDateTime date, Product product);
 }
 

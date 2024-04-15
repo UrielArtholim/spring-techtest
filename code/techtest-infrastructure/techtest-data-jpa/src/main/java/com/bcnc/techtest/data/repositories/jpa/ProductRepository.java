@@ -1,7 +1,6 @@
 package com.bcnc.techtest.data.repositories.jpa;
 
 import com.bcnc.techtest.data.entities.ProductEntity;
-import com.bcnc.techtest.data.entities.ProductId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 
 @Repository
-public interface JpaProductRepository extends JpaRepository<ProductEntity, ProductId> {
+public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     @Query(value = "Select product " +
       "from ProductEntity product " +
@@ -30,4 +29,5 @@ public interface JpaProductRepository extends JpaRepository<ProductEntity, Produ
       "and product.startDate <= :date " +
       "and product.endDate >= :date")
     void deleteProduct(@Param("brandId") long brandId, @Param("productId") long productId, @Param("date") LocalDateTime date);
+
 }

@@ -2,7 +2,7 @@ package com.bcnc.techtest.data.adapters.jpa;
 
 import com.bcnc.techtest.data.entities.ProductEntity;
 import com.bcnc.techtest.data.mappers.ProductEntityMapper;
-import com.bcnc.techtest.data.repositories.jpa.JpaProductRepository;
+import com.bcnc.techtest.data.repositories.jpa.ProductRepository;
 import com.bcnc.techtest.domain.models.Product;
 import com.bcnc.techtest.domain.ports.out.ProductRepositoryPort;
 import jakarta.persistence.EntityManager;
@@ -17,10 +17,10 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort {
 
     @PersistenceContext
     private final EntityManager entityManager;
-    private final JpaProductRepository repository;
+    private final ProductRepository repository;
     private final ProductEntityMapper mapper;
 
-    public ProductRepositoryAdapter(final EntityManager entityManager, final JpaProductRepository repository, final ProductEntityMapper mapper) {
+    public ProductRepositoryAdapter(final EntityManager entityManager, final ProductRepository repository, final ProductEntityMapper mapper) {
         this.entityManager = entityManager;
         this.repository = repository;
         this.mapper = mapper;

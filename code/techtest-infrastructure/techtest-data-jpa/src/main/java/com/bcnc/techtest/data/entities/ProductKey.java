@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class ProductId implements Serializable {
+public class ProductKey implements Serializable {
     private long productId;
     private long brandId;
 }
