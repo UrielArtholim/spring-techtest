@@ -3,9 +3,10 @@ package com.bcnc.techtest.data.entities;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 public class ProductKey implements Serializable {
-    private long productId;
-    private long brandId;
+    private BigDecimal productId;
+    private BigDecimal brandId;
 }

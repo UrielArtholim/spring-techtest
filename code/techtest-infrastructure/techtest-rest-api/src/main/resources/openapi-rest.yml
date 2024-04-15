@@ -60,14 +60,14 @@ paths:
         - in: path
           name: productId
           schema:
-            type: integer
+            type: number
           required: true
           description: Product ID
           example: 1309
         - in: path
           name: brandId
           schema:
-            type: integer
+            type: number
           required: true
           description: Brand ID
           example: 10036
@@ -90,7 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProductDTO"
+                $ref: "#/components/schemas/ProductInfoDTO"
         "400":
           description: "Bad request"
           content:
@@ -113,14 +113,14 @@ paths:
         - in: path
           name: productId
           schema:
-            type: integer
+            type: number
           required: true
           description: Product ID
           example: 1309
         - in: path
           name: brandId
           schema:
-            type: integer
+            type: number
           required: true
           description: Brand ID
           example: 10036
@@ -173,14 +173,14 @@ paths:
         - in: path
           name: productId
           schema:
-            type: integer
+            type: number
           required: true
           description: Product ID
           example: 1309
         - in: path
           name: brandId
           schema:
-            type: integer
+            type: number
           required: true
           description: Brand ID
           example: 10036
@@ -262,16 +262,16 @@ components:
       additionalProperties: false
       properties:
         productId:
-          type: integer
+          type: number
           example: 35455
           minimum: 1
           maximum: 50000
         brandId:
-          type: integer
+          type: number
           example: 1
           minimum: 1
           maximum: 50000
-        productList:
+        priceList:
           type: integer
           example: 3
           minimum: 1
@@ -280,6 +280,45 @@ components:
           type: integer
           example: 1
           minimum: 0
+          maximum: 20
+        price:
+          type: number
+          example: 1
+          minimum: 0
+          maximum: 50000
+        currency:
+          type: string
+          description: Product currency
+          maxLength: 3
+          example: "EUR"
+        startDate:
+          type: string
+          description: Product price activation date
+          maxLength: 20
+          example: "2020-06-14 00.00.00"
+        endDate:
+          type: string
+          description: Product price deprecation date
+          maxLength: 20
+          example: "2020-12-31 23.59.59"
+    ProductInfoDTO:
+      type: object
+      additionalProperties: false
+      properties:
+        productId:
+          type: number
+          example: 35455
+          minimum: 1
+          maximum: 50000
+        brandId:
+          type: number
+          example: 1
+          minimum: 1
+          maximum: 50000
+        priceList:
+          type: integer
+          example: 3
+          minimum: 1
           maximum: 20
         price:
           type: number

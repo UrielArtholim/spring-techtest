@@ -1,11 +1,12 @@
 package com.bcnc.techtest.usecases;
 
-import com.bcnc.techtest.domain.models.Product;
+import com.bcnc.techtest.domain.models.ProductInfo;
 import com.bcnc.techtest.domain.ports.in.RetrieveProductUseCase;
 import com.bcnc.techtest.domain.ports.out.ProductRepositoryPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -18,10 +19,10 @@ public class RetrieveProductUseCaseImpl implements RetrieveProductUseCase {
     }
 
     @Override
-    public Product retrieveProduct(long brandId, long productId, LocalDateTime date) {
-        Product retrievedProduct = this.repository.retrieveProduct(brandId, productId, date);
+    public ProductInfo retrieveProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date) {
+        ProductInfo productInfo = this.repository.retrieveProduct(brandId, productId, date);
         log.debug("|- Use Case: Retrieve Product -| ");
         log.debug("|- Status: COMPLETE -|");
-        return retrievedProduct;
+        return productInfo;
     }
 }

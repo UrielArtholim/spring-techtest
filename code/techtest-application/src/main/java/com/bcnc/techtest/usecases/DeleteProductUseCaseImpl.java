@@ -5,6 +5,7 @@ import com.bcnc.techtest.domain.ports.out.ProductRepositoryPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -18,7 +19,7 @@ public class DeleteProductUseCaseImpl implements DeleteProductUseCase {
     }
 
     @Override
-    public void deleteProduct(long brandId, long productId, LocalDateTime date) {
+    public void deleteProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date) {
         this.repository.deleteProduct(brandId, productId, date);
         log.debug("|- Use Case: Delete Product -| ");
         log.debug("|- Status: COMPLETE -|");

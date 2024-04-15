@@ -1,6 +1,7 @@
 package com.bcnc.techtest.data.entities;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,15 +15,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "PRICES")
 @IdClass(ProductKey.class)
+@Builder
 public class ProductEntity {
     @Id
     @Column(name = "BRAND_ID")
-    private long brandId;
+    private BigDecimal brandId;
     @Id
     @Column(name = "PRODUCT_ID")
-    private long productId;
+    private BigDecimal productId;
     @Column(name = "PRODUCT_LIST")
-    private int productList;
+    private int priceList;
     @Column(name = "PRIORITY")
     private int priority;
     @Column(name = "PRICE")
@@ -37,11 +39,11 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-    public ProductEntity(Long brandId, Long productId, int productList, int priority, BigDecimal price, String currency,
+    public ProductEntity(BigDecimal brandId, BigDecimal productId, int priceList, int priority, BigDecimal price, String currency,
                          LocalDateTime startDate, LocalDateTime endDate) {
         this.brandId = brandId;
         this.productId = productId;
-        this.productList = productList;
+        this.priceList = priceList;
         this.priority = priority;
         this.price = price;
         this.currency = currency;
@@ -53,12 +55,12 @@ public class ProductEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ProductEntity that)) return false;
-        return productList == that.productList && priority == that.priority && Objects.equals(brandId, that.brandId) && Objects.equals(productId, that.productId) && Objects.equals(price, that.price) && Objects.equals(currency, that.currency) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate);
+        return priceList == that.priceList && priority == that.priority && Objects.equals(brandId, that.brandId) && Objects.equals(productId, that.productId) && Objects.equals(price, that.price) && Objects.equals(currency, that.currency) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brandId, productId, productList, priority, price, currency, startDate, endDate);
+        return Objects.hash(brandId, productId, priceList, priority, price, currency, startDate, endDate);
     }
 
 }

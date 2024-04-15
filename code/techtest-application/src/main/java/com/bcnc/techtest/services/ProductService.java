@@ -1,6 +1,7 @@
 package com.bcnc.techtest.services;
 
 import com.bcnc.techtest.domain.models.Product;
+import com.bcnc.techtest.domain.models.ProductInfo;
 import com.bcnc.techtest.domain.ports.in.CreateProductUseCase;
 import com.bcnc.techtest.domain.ports.in.DeleteProductUseCase;
 import com.bcnc.techtest.domain.ports.in.RetrieveProductUseCase;
@@ -11,6 +12,7 @@ import com.bcnc.techtest.usecases.RetrieveProductUseCaseImpl;
 import com.bcnc.techtest.usecases.UpdateProductUseCaseImpl;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service
@@ -37,18 +39,18 @@ public class ProductService implements CreateProductUseCase, RetrieveProductUseC
     }
 
     @Override
-    public Product retrieveProduct(long brandId, long productId, LocalDateTime date) {
+    public ProductInfo retrieveProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date) {
         return this.retrieveProductUseCase.retrieveProduct(brandId, productId, date);
     }
 
 
     @Override
-    public void updateProduct(long brandId, long productId, LocalDateTime date, Product product) {
+    public void updateProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date, Product product) {
         this.updateProductUseCase.updateProduct(brandId, productId, date, product);
     }
 
     @Override
-    public void deleteProduct(long brandId, long productId, LocalDateTime date) {
+    public void deleteProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date) {
         this.deleteProductUseCase.deleteProduct(brandId, productId, date);
     }
 

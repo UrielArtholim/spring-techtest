@@ -1,9 +1,10 @@
 package com.bcnc.techtest.domain.ports.in;
 
-import com.bcnc.techtest.domain.models.Product;
+import com.bcnc.techtest.domain.models.ProductInfo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public interface RetrieveProductUseCase {
-    Product retrieveProduct(long brandId, long productId, LocalDateTime date);
+    ProductInfo retrieveProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date);
 }

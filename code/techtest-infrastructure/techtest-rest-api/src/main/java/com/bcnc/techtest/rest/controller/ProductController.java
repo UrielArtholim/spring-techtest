@@ -1,8 +1,9 @@
 package com.bcnc.techtest.rest.controller;
 
 import com.bcnc.techtest.api.ProductsApi;
-import com.bcnc.techtest.domain.models.Product;
+import com.bcnc.techtest.domain.models.ProductInfo;
 import com.bcnc.techtest.model.ProductDTO;
+import com.bcnc.techtest.model.ProductInfoDTO;
 import com.bcnc.techtest.rest.mappers.ProductDTOMapper;
 import com.bcnc.techtest.services.ProductService;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @RestController
@@ -25,7 +27,7 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<ProductDTO> createProduct(ProductDTO productDTO) {
-        Product retrievedProduct = this.retrieveService(productDTO);
+        ProductInfo retrievedProduct = this.retrieveService(productDTO);
         if(retrievedProduct != null)
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         this.productService.createProduct(this.mapper.toProduct(productDTO));
@@ -33,9 +35,9 @@ public class ProductController implements ProductsApi {
     }
 
     @Override
-    public ResponseEntity<ProductDTO> deleteProduct(Integer productId, Integer brandId, String dateId) {
+    public ResponseEntity<ProductDTO> deleteProduct(BigDecimal productId, BigDecimal brandId, String dateId) {
         LocalDateTime date = LocalDateTime.parse(dateId);
-        Product retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
+        ProductInfo retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
         if(retrievedProduct == null)
             return ResponseEntity.notFound().build();
         this.productService.deleteProduct(brandId, productId, date);
@@ -43,18 +45,19 @@ public class ProductController implements ProductsApi {
     }
 
     @Override
-    public ResponseEntity<ProductDTO> getProduct(Integer productId, Integer brandId, String dateId) {
+    public ResponseEntity<ProductInfoDTO> getProduct(BigDecimal productId, BigDecimal brandId, String dateId) {
         LocalDateTime date = LocalDateTime.parse(dateId);
-        Product retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
+        ProductInfo retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
         if(retrievedProduct == null)
             return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(this.mapper.toProductDTO(retrievedProduct));
+        ProductInfoDTO productInfoDTO = this.mapper.toProductInfoDTO(retrievedProduct);
+        return ResponseEntity.ok(productInfoDTO);
     }
 
     @Override
-    public ResponseEntity<ProductDTO> updateProduct(Integer productId, Integer brandId, String dateId, ProductDTO productDTO) {
+    public ResponseEntity<ProductDTO> updateProduct(BigDecimal productId, BigDecimal brandId, String dateId, ProductDTO productDTO) {
         LocalDateTime date = LocalDateTime.parse(dateId);
-        Product retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
+        ProductInfo retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
         if(retrievedProduct == null)
         {
             this.productService.createProduct(this.mapper.toProduct(productDTO));
@@ -64,7 +67,7 @@ public class ProductController implements ProductsApi {
         return ResponseEntity.ok(productDTO);    }
 
 
-    private Product retrieveService(ProductDTO productDTO)
+    private ProductInfo retrieveService(ProductDTO productDTO)
     {
         return this.productService.retrieveProduct(productDTO.getBrandId(), productDTO.getProductId(),
           LocalDateTime.parse(productDTO.getStartDate()));
