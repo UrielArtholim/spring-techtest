@@ -2,7 +2,7 @@ logging:
   level:
     root: INFO
     org.springframework.web: TRACE
-    com.example.techtest: ERROR
+    com.example.techtest: DEBUG
 spring:
   datasource:
     driverClassName: org.h2.Driver
@@ -10,6 +10,8 @@ spring:
     username: ${techtest.user}
     password: ${techtest.pass}
   jpa:
+    repositories:
+      enabled: true
     show-sql: true
     hibernate:
       ddl-auto: none
@@ -25,3 +27,6 @@ springdoc:
   api-docs:
     enabled: true
     path: /api/docs
+server:
+  servlet:
+    context-path: /example/techtest

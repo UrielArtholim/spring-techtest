@@ -1,6 +1,7 @@
 package com.example.techtest.data.repositories;
 
 import com.example.techtest.data.entities.ProductEntity;
+import com.example.techtest.data.entities.ProductKey;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+public interface ProductRepository extends JpaRepository<ProductEntity, ProductKey> {
 
     @Query(value = "Select product " +
       "from ProductEntity product " +
