@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.bcnc</groupId>
+        <groupId>com.example</groupId>
         <artifactId>techtest</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -19,7 +19,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.bcnc</groupId>
+            <groupId>com.example</groupId>
             <artifactId>techtest-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>techtest-data-jpa</artifactId>
+            <artifactId>techtest-data</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -48,13 +48,13 @@
                 <version>0.8.10</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/bcnc/techtest/boot/**/*</exclude>
-                        <exclude>com/bcnc/techtest/domain/mappers/**/*</exclude>
-                        <exclude>com/bcnc/techtest/data/entities/**/*</exclude>
-                        <exclude>com/bcnc/techtest/data/repositories/**/*</exclude>
-                        <exclude>com/bcnc/techtest/data/mappers/**/*</exclude>
-                        <exclude>com/bcnc/techtest/rest/handlers/**/*</exclude>
-                        <exclude>com/bcnc/techtest/rest/mappers/**/*</exclude>
+                        <exclude>com/example/techtest/boot/**/*</exclude>
+                        <exclude>com/example/techtest/domain/mappers/**/*</exclude>
+                        <exclude>com/example/techtest/data/entities/**/*</exclude>
+                        <exclude>com/example/techtest/data/repositories/**/*</exclude>
+                        <exclude>com/example/techtest/data/mappers/**/*</exclude>
+                        <exclude>com/example/techtest/rest/handlers/**/*</exclude>
+                        <exclude>com/example/techtest/rest/mappers/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
