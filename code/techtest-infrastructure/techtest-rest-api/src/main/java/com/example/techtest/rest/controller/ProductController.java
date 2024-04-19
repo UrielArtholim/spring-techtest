@@ -1,9 +1,9 @@
 package com.example.techtest.rest.controller;
 
-import com.example.techtest.api.ProductsApi;
 import com.example.techtest.domain.models.ProductInfo;
-import com.example.techtest.model.ProductDTO;
-import com.example.techtest.model.ProductInfoDTO;
+import com.example.techtest.openapi.api.ProductsApi;
+import com.example.techtest.openapi.model.ProductDTO;
+import com.example.techtest.openapi.model.ProductInfoDTO;
 import com.example.techtest.rest.mappers.ProductDTOMapper;
 import com.example.techtest.services.ProductService;
 import org.springframework.http.HttpStatus;
@@ -66,9 +66,9 @@ public class ProductController implements ProductsApi {
         return ResponseEntity.ok(productDTO);
     }
 
-
     private ProductInfo retrieveService(ProductDTO productDTO) {
         return this.productService.retrieveProduct(productDTO.getBrandId(), productDTO.getProductId(),
           LocalDateTime.parse(productDTO.getStartDate()));
     }
+
 }

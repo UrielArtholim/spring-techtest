@@ -2,8 +2,8 @@ package com.example.techtest.rest.mappers;
 
 import com.example.techtest.domain.models.Product;
 import com.example.techtest.domain.models.ProductInfo;
-import com.example.techtest.model.ProductDTO;
-import com.example.techtest.model.ProductInfoDTO;
+import com.example.techtest.openapi.model.ProductDTO;
+import com.example.techtest.openapi.model.ProductInfoDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

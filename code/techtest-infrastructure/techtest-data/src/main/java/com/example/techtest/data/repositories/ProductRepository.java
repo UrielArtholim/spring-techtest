@@ -14,14 +14,14 @@ import java.time.LocalDateTime;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, ProductKey> {
 
-    @Query(value = "Select product " +
-      "from ProductEntity product " +
-      "where product.brandId = ?#{[0]} " +
-      "and product.productId = ?#{[1]} " +
-      "and product.startDate <= ?#{[2]} " +
-      "and product.endDate >= ?#{[2]} " +
-      "order by product.priority desc limit 1")
-    ProductEntity findProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date);
+    @Query(value = "Select top 1 * " +
+      "from PRICES prices " +
+      "where BRAND_ID = :brandId " +
+      "and PRODUCT_ID = :productId " +
+      "and START_DATE <= :date " +
+      "and END_DATE >= :date " +
+      "order by PRIORITY desc", nativeQuery = true)
+    ProductEntity findProduct(@Param("brandId") BigDecimal brandId, @Param("productId") BigDecimal productId, @Param("date") LocalDateTime date);
 
     @Modifying
     @Query(value = "Delete " +

@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 2.1.0
+  version: 1.0.0
   title: Technical Test REST API
   description: REST API related to BCNC Technical Test
   contact:

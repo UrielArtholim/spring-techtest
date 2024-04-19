@@ -24,7 +24,7 @@ public class ProductEntity {
     @Id
     @Column(name = "PRODUCT_ID")
     private BigDecimal productId;
-    @Column(name = "PRODUCT_LIST")
+    @Column(name = "PRICE_LIST")
     private int priceList;
     @Column(name = "PRIORITY")
     private int priority;

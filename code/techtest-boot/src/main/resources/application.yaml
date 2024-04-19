@@ -24,9 +24,13 @@ spring:
       enabled: true
       path: /h2
 springdoc:
+  swagger-ui:
+    url: /openapi.yml
+    path: /swagger-ui
+  packages-to-scan: com.example.techtest.openapi
   api-docs:
     enabled: true
-    path: /api/docs
+    path: /docs
 server:
   servlet:
-    context-path: /example/techtest
+    context-path: /techtest/api
