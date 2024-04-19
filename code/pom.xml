@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>techtest</name>
-    <description>Technical test for BCNC</description>
+    <description>Spring Hexagonal Architecture Technical Test</description>
     <modules>
         <module>techtest-domain</module>
         <module>techtest-application</module>
@@ -32,11 +32,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>3.2.4</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.2.4</version>
-        </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

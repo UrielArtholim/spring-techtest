@@ -43,27 +43,37 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>
-                <configuration>
-                    <excludes>
-                        <exclude>com/example/techtest/boot/**/*</exclude>
-                        <exclude>com/example/techtest/domain/mappers/**/*</exclude>
-                        <exclude>com/example/techtest/data/entities/**/*</exclude>
-                        <exclude>com/example/techtest/data/repositories/**/*</exclude>
-                        <exclude>com/example/techtest/data/mappers/**/*</exclude>
-                        <exclude>com/example/techtest/rest/handlers/**/*</exclude>
-                        <exclude>com/example/techtest/rest/mappers/**/*</exclude>
-                    </excludes>
-                </configuration>
                 <executions>
                     <execution>
-                        <id>jacoco-site-aggregate</id>
-                        <phase>verify</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
+                        <configuration>
+                            <dataFileIncludes>
+                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
+                            </dataFileIncludes>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-aggregate</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
