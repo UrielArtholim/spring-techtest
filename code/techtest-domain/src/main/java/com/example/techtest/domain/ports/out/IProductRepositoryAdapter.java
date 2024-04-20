@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Service
 public interface IProductRepositoryAdapter {
-    void createProduct(Product product);
+    Product createProduct(Product product);
 
     ProductInfo retrieveProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date);
 
