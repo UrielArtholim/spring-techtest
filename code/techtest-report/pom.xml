@@ -9,12 +9,23 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>techtest-application</artifactId>
+    <artifactId>techtest-report</artifactId>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>techtest-domain</artifactId>
+            <artifactId>techtest-boot</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>techtest-application</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -22,12 +33,13 @@
             <artifactId>techtest-data</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>techtest-rest</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 
 </project>

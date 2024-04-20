@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: techtest
+  datasource:
+    url: jdbc:h2:mem:techtest; DB_CLOSE_DELAY:-1;DATABASE_TO_UPPER=false
+    driverClassName: org.h2.Driver
+    username: ${techtest.user}
+    password: ${techtest.pass}
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      platform: h2
+      data-locations: classpath:data.sql
