@@ -1,22 +1,22 @@
 package com.example.techtest.data.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 
-
 @Entity
 @Table(name = "PRICES")
 @IdClass(ProductKey.class)
-@Setter
 @Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Builder
+@AllArgsConstructor
 public class ProductEntity {
     @Id
     @Column(name = "BRAND_ID")
@@ -37,22 +37,6 @@ public class ProductEntity {
     private LocalDateTime startDate;
     @Column(name = "END_DATE")
     private LocalDateTime endDate;
-
-    public ProductEntity() {
-        //Default constructor
-    }
-
-    public ProductEntity(BigDecimal brandId, BigDecimal productId, int priceList, int priority, BigDecimal price, String currency,
-                         LocalDateTime startDate, LocalDateTime endDate) {
-        this.brandId = brandId;
-        this.productId = productId;
-        this.priceList = priceList;
-        this.priority = priority;
-        this.price = price;
-        this.currency = currency;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
 
     @Override
     public boolean equals(Object o) {

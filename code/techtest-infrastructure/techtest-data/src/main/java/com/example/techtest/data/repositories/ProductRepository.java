@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public interface ProductRepository extends JpaRepository<ProductEntity, ProductKey> {
 
     @Query(value = "Select top 1 * " +
-      "from PRICES prices " +
+      "from PRICES " +
       "where BRAND_ID = :brandId " +
       "and PRODUCT_ID = :productId " +
       "and START_DATE <= :date " +
@@ -25,11 +25,11 @@ public interface ProductRepository extends JpaRepository<ProductEntity, ProductK
 
     @Modifying
     @Query(value = "Delete " +
-      "from ProductEntity product " +
-      "where product.brandId = :brandId " +
-      "and product.productId = :productId " +
-      "and product.startDate <= :date " +
-      "and product.endDate >= :date")
+      "from PRICES " +
+      "where BRAND_ID = :brandId " +
+      "and PRODUCT_ID = :productId " +
+      "and START_DATE <= :date " +
+      "and END_DATE >= :date ", nativeQuery = true)
     void deleteProduct(@Param("brandId") BigDecimal brandId, @Param("productId") BigDecimal productId, @Param("date") LocalDateTime date);
 
 }
