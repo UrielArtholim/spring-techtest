@@ -1,11 +1,11 @@
-package com.example.techtest.rest.controller;
+package com.example.techtest.rest.controllers;
 
+import com.example.techtest.application.services.ProductService;
 import com.example.techtest.domain.models.ProductInfo;
 import com.example.techtest.openapi.api.ProductsApi;
 import com.example.techtest.openapi.model.ProductDTO;
 import com.example.techtest.openapi.model.ProductInfoDTO;
 import com.example.techtest.rest.mappers.ProductDTOMapper;
-import com.example.techtest.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ public class ProductController implements ProductsApi {
         if (retrievedProduct != null)
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         this.productService.createProduct(this.mapper.toProduct(productDTO));
-        return ResponseEntity.ok(productDTO);
+        return new ResponseEntity<>(productDTO, HttpStatusCode.valueOf(HttpStatus.CREATED.value()));
     }
 
     @Override

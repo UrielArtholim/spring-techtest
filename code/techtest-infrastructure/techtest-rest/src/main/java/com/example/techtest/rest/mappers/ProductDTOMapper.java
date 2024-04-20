@@ -11,9 +11,9 @@ public interface ProductDTOMapper {
 
     ProductDTO toProductDTO(Product product);
 
-    Product toProduct(ProductDTO productDTO);
+    com.example.techtest.openapi.model.ProductInfoDTO toProductInfoDTO(ProductInfo productInfo);
 
-    ProductInfoDTO toProductInfoDTO(ProductInfo productInfo);
+    Product toProduct(ProductDTO productDTO);
 
     ProductInfo toProductInfo(ProductInfoDTO productInfoDTO);
 }

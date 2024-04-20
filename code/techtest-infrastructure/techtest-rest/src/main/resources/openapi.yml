@@ -30,8 +30,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-        "200":
+                $ref: "#/components/schemas/InternalServerErrorResponse"
+        "201":
           description: "Product data"
           content:
             application/json:
@@ -42,13 +42,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/BadRequestResponse"
         "409":
           description: "Conflict"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ConflictResponse"
   /products/{productId}/brand/{brandId}/date/{dateId}:
     get:
       operationId: GetProduct
@@ -84,7 +84,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/InternalServerErrorResponse"
         "200":
           description: "Product data"
           content:
@@ -96,13 +96,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/BadRequestResponse"
         "404":
           description: "Not found"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/NotFoundResponse"
     put:
       operationId: UpdateProduct
       description: Update a product given its brand, id and an active date
@@ -144,7 +144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/InternalServerErrorResponse"
         "200":
           description: "Product data"
           content:
@@ -162,7 +162,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/BadRequestResponse"
     delete:
       operationId: DeleteProduct
       description: Remove a product given its brand, id and an active date
@@ -197,7 +197,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/InternalServerErrorResponse"
         "204":
           description: "No content"
           content:
@@ -209,16 +209,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/BadRequestResponse"
         "404":
           description: "Not found"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/NotFoundResponse"
 components:
   schemas:
-    Error:
+    InternalServerErrorResponse:
       type: object
       additionalProperties: false
       properties:
@@ -238,25 +238,66 @@ components:
           minimum: 100
           maximum: 700
           example: 200
-    ResponseDefault:
+    BadRequestResponse:
       type: object
       additionalProperties: false
       properties:
-        code:
+        title:
+          type: string
+          description: A brief title of the error.
+          maxLength: 255
+          example: "Error title"
+        detail:
+          type: string
+          maxLength: 255
+          description: A more detailed description of the error.
+          example: "Detailed message"
+        status:
           type: integer
-          example: 204
+          description: The HTTP status code represented as string.
           minimum: 100
           maximum: 700
-        message:
+          example: 200
+    NotFoundResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        title:
           type: string
-          description: A brief description of the response.
-          maxLength: 100
-          example: "No content"
-        description:
-          type: string
-          description: A more detailed description of the error.
+          description: A brief title of the error.
           maxLength: 255
-          example: "No content available"
+          example: "Error title"
+        detail:
+          type: string
+          maxLength: 255
+          description: A more detailed description of the error.
+          example: "Detailed message"
+        status:
+          type: integer
+          description: The HTTP status code represented as string.
+          minimum: 100
+          maximum: 700
+          example: 200
+    ConflictResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        title:
+          type: string
+          description: A brief title of the error.
+          maxLength: 255
+          example: "Error title"
+        detail:
+          type: string
+          maxLength: 255
+          description: A more detailed description of the error.
+          example: "Detailed message"
+        status:
+          type: integer
+          description: The HTTP status code represented as string.
+          minimum: 100
+          maximum: 700
+          example: 200
     ProductDTO:
       type: object
       additionalProperties: false
