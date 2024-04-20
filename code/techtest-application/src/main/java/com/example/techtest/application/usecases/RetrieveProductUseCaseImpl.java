@@ -1,4 +1,4 @@
-package com.example.techtest.usecases;
+package com.example.techtest.application.usecases;
 
 import com.example.techtest.domain.models.ProductInfo;
 import com.example.techtest.domain.ports.in.RetrieveProductUseCase;
@@ -18,7 +18,6 @@ public class RetrieveProductUseCaseImpl implements RetrieveProductUseCase {
 
     @Override
     public ProductInfo retrieveProduct(BigDecimal brandId, BigDecimal productId, LocalDateTime date) {
-        ProductInfo productInfo = this.repository.retrieveProduct(brandId, productId, date);
-        return productInfo;
+        return this.repository.retrieveProduct(brandId, productId, date);
     }
 }

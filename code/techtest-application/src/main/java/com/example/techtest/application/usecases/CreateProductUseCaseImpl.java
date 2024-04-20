@@ -1,4 +1,4 @@
-package com.example.techtest.usecases;
+package com.example.techtest.application.usecases;
 
 import com.example.techtest.domain.models.Product;
 import com.example.techtest.domain.ports.in.CreateProductUseCase;
@@ -16,8 +16,8 @@ public class CreateProductUseCaseImpl implements CreateProductUseCase {
     }
 
     @Override
-    public void createProduct(Product product) {
-        this.repository.createProduct(product);
+    public Product createProduct(Product product) {
+        return this.repository.createProduct(product);
 
     }
 }

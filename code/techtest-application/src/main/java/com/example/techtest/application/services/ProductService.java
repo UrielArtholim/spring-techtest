@@ -1,15 +1,15 @@
-package com.example.techtest.services;
+package com.example.techtest.application.services;
 
+import com.example.techtest.application.usecases.CreateProductUseCaseImpl;
+import com.example.techtest.application.usecases.DeleteProductUseCaseImpl;
+import com.example.techtest.application.usecases.RetrieveProductUseCaseImpl;
+import com.example.techtest.application.usecases.UpdateProductUseCaseImpl;
 import com.example.techtest.domain.models.Product;
 import com.example.techtest.domain.models.ProductInfo;
 import com.example.techtest.domain.ports.in.CreateProductUseCase;
 import com.example.techtest.domain.ports.in.DeleteProductUseCase;
 import com.example.techtest.domain.ports.in.RetrieveProductUseCase;
 import com.example.techtest.domain.ports.in.UpdateProductUseCase;
-import com.example.techtest.usecases.CreateProductUseCaseImpl;
-import com.example.techtest.usecases.DeleteProductUseCaseImpl;
-import com.example.techtest.usecases.RetrieveProductUseCaseImpl;
-import com.example.techtest.usecases.UpdateProductUseCaseImpl;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -34,8 +34,8 @@ public class ProductService implements CreateProductUseCase, RetrieveProductUseC
     }
 
     @Override
-    public void createProduct(Product product) {
-        this.createProductUseCase.createProduct(product);
+    public Product createProduct(Product product) {
+        return this.createProductUseCase.createProduct(product);
     }
 
     @Override

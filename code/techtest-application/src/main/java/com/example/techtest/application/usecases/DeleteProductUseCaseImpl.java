@@ -1,4 +1,4 @@
-package com.example.techtest.usecases;
+package com.example.techtest.application.usecases;
 
 import com.example.techtest.domain.ports.in.DeleteProductUseCase;
 import com.example.techtest.domain.ports.out.IProductRepositoryAdapter;
