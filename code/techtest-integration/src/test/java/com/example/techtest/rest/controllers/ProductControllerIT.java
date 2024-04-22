@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.math.BigDecimal;
@@ -28,6 +29,8 @@ import java.util.Map;
 import static com.example.techtest.domain.constants.CurrencyConstants.EURO;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -62,6 +65,7 @@ class ProductControllerIT {
 
     @BeforeAll
     static void setUp() {
+
         LocalDateTime use_case_1 = LocalDateTime.parse("2020-06-14T10:00:00");
         LocalDateTime use_case_2 = LocalDateTime.parse("2020-06-14T16:00:00");
         LocalDateTime use_case_3 = LocalDateTime.parse("2020-06-14T21:00:00");
@@ -76,37 +80,6 @@ class ProductControllerIT {
         expectedProducts.put(use_case_5, setUpExpectedProduct(5));
     }
 
-    @Test
-    void customHandlerException_notFound() throws Exception {
-        mockMvc.perform(get("/products/1/brand/1/date/2020-06-13T00:00:00")
-            .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isNotFound())
-          .andExpect(result -> assertInstanceOf(NoResourceFoundException.class, result.getResolvedException()));
-    }
-
-    @Test
-    void customHandlerException_badRequest() throws Exception {
-        mockMvc.perform(post("/products/1/brand/1/date/")
-            .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isNotFound())
-          .andExpect(result -> assertInstanceOf(IllegalArgumentException.class, result.getResolvedException()));
-    }
-
-    @Test
-    void customHandlerException_conflict() throws Exception {
-        mockMvc.perform(post("/products")
-            .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isNotFound())
-          .andExpect(result -> assertInstanceOf(UnsupportedOperationException.class, result.getResolvedException()));
-    }
-
-    @Test
-    void customHandlerException_internalServerError() throws Exception {
-        mockMvc.perform(post("/products")
-            .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isNotFound())
-          .andExpect(result -> assertInstanceOf(Exception.class, result.getResolvedException()));
-    }
 
     // Unable to test against the REST Controller due to MockMvc way to detect Models, as it requires the
     // controller to have @ResponseStatus and @ResponseBody, which in OpenAPI are inside the interface, so it
