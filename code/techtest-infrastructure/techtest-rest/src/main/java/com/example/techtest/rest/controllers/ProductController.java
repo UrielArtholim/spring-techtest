@@ -27,15 +27,33 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<ProductDTO> createProduct(ProductDTO productDTO) {
+        if(productDTO == null)
+        {
+            return ResponseEntity.badRequest().body(productDTO);
+        }
         ProductInfo retrievedProduct = this.retrieveService(productDTO);
+
         if (retrievedProduct != null)
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         this.productService.createProduct(this.mapper.toProduct(productDTO));
         return new ResponseEntity<>(productDTO, HttpStatusCode.valueOf(HttpStatus.CREATED.value()));
+
     }
 
     @Override
     public ResponseEntity<ProductDTO> deleteProduct(BigDecimal productId, BigDecimal brandId, String dateId) {
+        if(productId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(brandId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(dateId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
         LocalDateTime date = LocalDateTime.parse(dateId);
         ProductInfo retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
         if (retrievedProduct == null)
@@ -46,6 +64,18 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<ProductInfoDTO> getProduct(BigDecimal productId, BigDecimal brandId, String dateId) {
+        if(productId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(brandId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(dateId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
         LocalDateTime date = LocalDateTime.parse(dateId);
         ProductInfo retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
         if (retrievedProduct == null)
@@ -56,6 +86,22 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<ProductDTO> updateProduct(BigDecimal productId, BigDecimal brandId, String dateId, ProductDTO productDTO) {
+        if(productId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(brandId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(dateId == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if(productDTO == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
         LocalDateTime date = LocalDateTime.parse(dateId);
         ProductInfo retrievedProduct = this.productService.retrieveProduct(brandId, productId, date);
         if (retrievedProduct == null) {
